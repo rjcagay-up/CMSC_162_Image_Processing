@@ -69,19 +69,19 @@ def extract_pcx_header(file_path):
             header = file.read(128)
 
             # Byte 0: Manufacturer (1 byte)
-            header_data['manufacturer'] = int(header[0])
+            header_data['Manufacturer'] = int(header[0])
 
             # Byte 1: Version (1 byte)
-            header_data['version'] = int(header[1])
+            header_data['Version'] = int(header[1])
 
             # Byte 2: Encoding type (1 byte)
-            header_data['encoding'] = int(header[2])
+            header_data['Encoding'] = int(header[2])
 
             # Byte 3: Bits per Pixel (1 byte)
-            header_data['bits_per_pixel'] = int(header[3])
+            header_data['Bits per pixel'] = int(header[3])
 
             # Bytes 4-11: Image Dimensions (4 bytes each, little-endian)
-            header_data['image_dimensions'] = (
+            header_data['Image Dimensions'] = (
                 int.from_bytes(header[4:6], byteorder='little'),
                 int.from_bytes(header[6:8], byteorder='little'),
                 int.from_bytes(header[8:10], byteorder='little'),
@@ -89,26 +89,26 @@ def extract_pcx_header(file_path):
             )
 
             # Bytes 12-13: HDPI (little-endian)
-            header_data['hdpi'] = int.from_bytes(header[12:14], byteorder='little')
+            header_data['HDPI'] = int.from_bytes(header[12:14], byteorder='little')
 
             # Bytes 14-15: VDPI (little-endian)
-            header_data['vdpi'] = int.from_bytes(header[14:16], byteorder='little')
+            header_data['VDPI'] = int.from_bytes(header[14:16], byteorder='little')
 
             # Byte 65: Number of Color Planes (1 byte)
-            header_data['num_color_planes'] = int(header[65])
+            header_data['Number of Color Planes'] = int(header[65])
 
             # Bytes 66-67: Bytes per Line (2 bytes, little-endian)
-            header_data['bytes_per_line'] = int.from_bytes(header[66:68], byteorder='little')
+            header_data['Bytes per Line'] = int.from_bytes(header[66:68], byteorder='little')
 
             # Bytes 68-71: Palette Info (2 bytes each, little-endian)
-            header_data['palette_info'] = (
+            header_data['Palette Information'] = (
                 int.from_bytes(header[68:70], byteorder='little'),
                 int.from_bytes(header[70:72], byteorder='little')
             )
 
             # Bytes 16-19: Horizontal and Vertical Screen Size (2 bytes each, little-endian)
-            header_data['horizontal_screen_size'] = int.from_bytes(header[16:18], byteorder='little')
-            header_data['vertical_screen_size'] = int.from_bytes(header[18:20], byteorder='little')
+            header_data['Horizontal Screen Size'] = int.from_bytes(header[16:18], byteorder='little')
+            header_data['Vertical Screen Size'] = int.from_bytes(header[18:20], byteorder='little')
 
             # Read and parse the color palette
             file.seek(-769, 2)  # Go to the palette data at the end of the file
@@ -246,7 +246,7 @@ def create_main_window():
 
     root = tk.Tk()
     root.title("File Viewer")
-    root.configure(bg="blue")
+    root.configure(bg="light gray")
 
     # Initialize global variables
     header_data = {}
