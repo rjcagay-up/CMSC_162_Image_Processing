@@ -162,7 +162,7 @@ def display_color_palette(color_palette):
     global palette_canvas
 
     # Create a canvas for color palette
-    palette_canvas = tk.Canvas(root, width=150, height=150, bg="white")
+    palette_canvas = tk.Canvas(root, width=100, height=100, bg="white")
     palette_canvas.pack()
 
     # Calculate the number of rows and columns for the color palette
